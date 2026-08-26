@@ -2,7 +2,7 @@
   <img src="web-vue/public/logo.svg" width="112" alt="ChatGPT2API logo" />
 </p>
 
-<h1 align="center">ChatGPT2API</h1>
+<h1 align="center">ChatGPT2API-katabump版本</h1>
 
 <p align="center">将 ChatGPT 官网能力接入 OpenAI 兼容 API，并提供面向多账号、图片任务与自托管场景的管理控制台。</p>
 
@@ -34,9 +34,9 @@
 > 使用者须自行了解技术、账号与合规风险，遵守 OpenAI 服务条款及当地法律法规。严禁用于批量滥用、恶意竞争、账号盗用、诈骗、骚扰，以及生成或传播违法、暴力、色情或涉及未成年人的内容；使用者自行承担全部风险与责任。
 
 <p align="center">
-  <a href="https://qm.qq.com/q/yegwCqJisS">QQ 交流群：1005859624</a>
-  &nbsp;&nbsp;·&nbsp;&nbsp; <a href="https://pay.ldxp.cn/shop/yukkcat">购买生图账号</a>
-  &nbsp;&nbsp;·&nbsp;&nbsp; <a href="https://api.klong.lat">生图 API：小量 ¥0.02/张 · 中转 ¥0.01/张 · 大量/企业 ¥0.009/张</a>
+  <a href="https://qm.qq.com/q/yegwCqJisS">
+  &nbsp;&nbsp;·&nbsp;&nbsp; <a href="</a>
+  >
 </p>
 
 ## 快速部署
