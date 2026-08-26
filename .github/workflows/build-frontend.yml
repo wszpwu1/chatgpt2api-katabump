@@ -1,0 +1,65 @@
+name: Build and Release Frontend
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: web-vue/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          cd web-vue
+          npm ci
+
+      - name: Build frontend
+        run: |
+          cd web-vue
+          npm run build
+
+      - name: Create dist archive
+        run: |
+          cd web-vue
+          tar -czf ../dist.tar.gz dist/
+
+      - name: Generate release tag
+        id: tag
+        run: |
+          echo "tag=frontend-$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          name: Frontend Build ${{ steps.tag.outputs.tag }}
+          body: |
+            Automated frontend build from commit ${{ github.sha }}
+            
+            Download `dist.tar.gz` and extract to `web-vue/` directory.
+          files: dist.tar.gz
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update latest tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -fa latest -m "Latest frontend build"
+          git push origin latest --force
